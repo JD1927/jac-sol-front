@@ -31,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -95,6 +96,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -126,6 +128,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "jac-sol-front"
+    }
+  },
+  "defaultProject": "jac-sol-front",
+  "cli": {
+    "analytics": "0e06ed8d-bf78-48da-a8e0-3293d2f44437"
+  }
 }
