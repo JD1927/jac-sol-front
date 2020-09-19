@@ -1,0 +1,18 @@
+<mat-drawer-container class="container">
+  <mat-drawer #sidenav class="sidenav" mode="side" opened>
+    <mat-selection-list multiple="false" class="sidenav__list">
+      <mat-list-option (click)="onHome()">
+        <mat-icon mat-list-icon>home</mat-icon> Inicio
+      </mat-list-option>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Administración</div>
+      <mat-list-option (click)="onCommittee()">
+        <mat-icon mat-list-icon>group</mat-icon> Comité
+      </mat-list-option>
+
+    </mat-selection-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

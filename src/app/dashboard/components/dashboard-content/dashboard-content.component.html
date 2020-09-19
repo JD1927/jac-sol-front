@@ -1,0 +1,17 @@
+<div class="dashboard">
+  <div class="dashboard__title">
+    <h1 class="mat-h1">Dashboard</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="dashboard__content animated fade-in-down">
+    <div class="dashboard__content-main">
+      <mat-card class="mat-elevation-z3">
+        <app-pie-chart
+          [title]="'Gráfica Afiliados por Comité'"
+          [pieChartLabels]="committeeLabels"
+          [pieChartData]="committeeDataSet">
+        </app-pie-chart>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -9,19 +9,21 @@ import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]

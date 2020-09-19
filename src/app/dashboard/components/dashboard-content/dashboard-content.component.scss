@@ -1,0 +1,24 @@
+@import './../../../../styles.scss';
+
+.dashboard {
+
+  @include e('title') {
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  @include e('content') {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 20px;
+
+    @include mq-up(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include gc('main') {
+      margin: 20px;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import './../../../../styles.scss';
+
+.pie-chart {
+
+  @include e('title') {
+    text-align: center;
+    @include gc('text') {
+      font-size: 1rem;
+
+      @include mq-up(sm) {
+        font-size: 1.3rem;
+      }
+      @include mq-up(md) {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  @include e('canvas') {
+    display: block;
+    width: 100% !important;
+  }
+}

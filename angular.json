@@ -25,6 +25,9 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "allowedCommonJsDependencies": [
+              "chart.js"
+            ],
             "aot": true,
             "assets": [
               "src/favicon.ico",
@@ -73,7 +76,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "jac-sol-front:build"
+            "browserTarget": "jac-sol-front:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
