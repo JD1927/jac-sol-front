@@ -1,4 +1,4 @@
-@import './../../../styles.scss';
+@import './../../../../styles.scss';
 
 .container {
   display: block;
@@ -10,5 +10,10 @@
     @include e('list') {
       padding-top: 0;
     }
+  }
+
+  .option {
+    font-family: 'Ubuntu';
+    font-size: 1rem;
   }
 }

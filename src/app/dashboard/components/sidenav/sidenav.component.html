@@ -1,12 +1,12 @@
 <mat-drawer-container class="container">
   <mat-drawer #sidenav class="sidenav" mode="side" opened>
     <mat-selection-list multiple="false" class="sidenav__list">
-      <mat-list-option (click)="onHome()">
+      <mat-list-option class="option" (click)="onHome()">
         <mat-icon mat-list-icon>home</mat-icon> Inicio
       </mat-list-option>
       <mat-divider></mat-divider>
       <div mat-subheader>Administración</div>
-      <mat-list-option (click)="onCommittee()">
+      <mat-list-option class="option" (click)="onCommittee()">
         <mat-icon mat-list-icon>group</mat-icon> Comité
       </mat-list-option>
 

@@ -5,6 +5,7 @@
   @include e('title') {
     text-align: center;
     @include gc('text') {
+      font-family: 'Ubuntu';
       font-size: 1rem;
 
       @include mq-up(sm) {

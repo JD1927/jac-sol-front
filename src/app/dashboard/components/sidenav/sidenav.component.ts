@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { SidenavService } from '../services/sidenav/sidenav.service';
+import { SidenavService } from './../../services/sidenav/sidenav.service';
 
 @Component({
   selector: 'app-sidenav',

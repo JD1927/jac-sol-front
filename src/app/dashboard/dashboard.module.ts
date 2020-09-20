@@ -16,8 +16,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { ChartService } from './services/charts/chart.service';
 import { SidenavService } from './services/sidenav/sidenav.service';
-import { SidenavComponent } from './sidenav/sidenav.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
+import { SidenavComponent } from './../dashboard/components/sidenav/sidenav.component';
+import { ToolbarComponent } from './../dashboard/components/toolbar/toolbar.component';
 
 export const routes: Routes = [
   {
