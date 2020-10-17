@@ -1,0 +1,20 @@
+<div class="alert">
+  <div class="alert__img">
+    <img *ngIf="data?.type === modalType.ERROR" src="../../../../assets/img/svg/error_outline.svg" alt="error">
+  </div>
+  <h2 class="alert__title">
+    Código error: {{ data?.error?.statusCode }}
+  </h2>
+  <mat-dialog-content>
+    <div class="alert__message">
+      {{ data?.error?.message }}
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <div class="alert__actions">
+      <button class="custom__button" mat-dialog-close mat-raised-button color="primary">
+        Aceptar
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

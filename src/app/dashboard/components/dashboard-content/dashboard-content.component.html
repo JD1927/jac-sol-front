@@ -9,8 +9,29 @@
         <app-pie-chart
           [title]="'Gráfica Afiliados por Comité.'"
           [pieChartLabels]="committeeLabels"
-          [pieChartData]="committeeDataSet">
+          [pieChartData]="committeeDataSet"
+          [colorOption]="1">
         </app-pie-chart>
+        <div class="report">
+          <button class="custom__button" mat-raised-button color="primary" (click)="onMembersReport()">
+            <mat-icon>insert_chart_outlined</mat-icon> Descargar reporte de Afiliados
+          </button>
+        </div>
+      </mat-card>
+    </div>
+    <div class="dashboard__content-main">
+      <mat-card class="mat-elevation-z3">
+        <app-pie-chart
+          [title]="'Gráfica Personas por Rol.'"
+          [pieChartLabels]="roleLabels"
+          [pieChartData]="roleDataSet"
+          [colorOption]="2">
+        </app-pie-chart>
+        <div class="report">
+          <button class="custom__button" mat-raised-button color="primary">
+            <mat-icon>insert_chart_outlined</mat-icon> Descargar reporte de General
+          </button>
+        </div>
       </mat-card>
     </div>
   </div>

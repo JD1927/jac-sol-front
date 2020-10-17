@@ -1,33 +1,55 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { ChartOptions, ChartType, PositionType } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
-import { chartColors } from './../../chart.conf';
+import { ChartColors, chartColors1, chartColors2, chartColors3 } from './../../chart.conf';
 
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.scss']
 })
-export class PieChartComponent implements OnInit {
+export class PieChartComponent implements AfterViewInit {
 
-  public pieChartOptions: ChartOptions = {
+  pieChartOptions: ChartOptions = {
     responsive: true,
     legend: {
+      labels: {
+        fontFamily: 'Ubuntu'
+      },
       position: 'left'
     }
   };
-  public pieChartType: ChartType = 'pie';
-  public pieChartLegend = true;
-  public pieChartColors = [...chartColors];
+  pieChartType: ChartType = 'pie';
+  pieChartLegend = true;
+  pieChartColors: ChartColors[] = [];
 
   @Input() title!: string;
   @Input() pieChartLabels: Label[] = [];
   @Input() pieChartData: SingleDataSet = [];
   @Input() legendPosition!: PositionType;
+  @Input() colorOption!: number;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.setChartColors();
+  }
+
+  setChartColors(): void {
+    switch (this.colorOption) {
+      case 1:
+        this.pieChartColors.push(chartColors1);
+        break;
+      case 2:
+        this.pieChartColors.push(chartColors2);
+        break;
+      case 3:
+        this.pieChartColors.push(chartColors3);
+        break;
+      default:
+        this.pieChartColors.push(chartColors1);
+        break;
+    }
   }
 
 }

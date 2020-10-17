@@ -10,14 +10,25 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule, Routes } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { AdminEffects } from '../store/effects/admin/admin.effects';
+import { adminReducer } from '../store/reducers/admin/admin.reducer';
+import { personReducer } from '../store/reducers/person/person.reducer';
+import { SidenavComponent } from './../dashboard/components/sidenav/sidenav.component';
+import { ToolbarComponent } from './../dashboard/components/toolbar/toolbar.component';
 import { SharedModule } from './../shared/shared.module';
 import { DashboardContentComponent } from './components/dashboard-content/dashboard-content.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { ChartService } from './services/charts/chart.service';
+import { CommitteeService } from './services/committee/committee.service';
+import { HealthcareService } from './services/healthcare/healthcare.service';
+import { HobbyService } from './services/hobby/hobby.service';
+import { ProfessionService } from './services/profession/profession.service';
 import { SidenavService } from './services/sidenav/sidenav.service';
-import { SidenavComponent } from './../dashboard/components/sidenav/sidenav.component';
-import { ToolbarComponent } from './../dashboard/components/toolbar/toolbar.component';
+import { ReportService } from './services/report/report.service';
+import { PersonEffects } from '../store/effects/person/person.effects';
 
 export const routes: Routes = [
   {
@@ -45,6 +56,8 @@ export const routes: Routes = [
     MatButtonModule,
     MatCardModule,
     RouterModule.forChild(routes),
+    StoreModule.forFeature('adminState', adminReducer),
+    EffectsModule.forFeature([AdminEffects]),
     SharedModule,
     HttpClientModule,
   ],
@@ -52,6 +65,11 @@ export const routes: Routes = [
   providers: [
     SidenavService,
     ChartService,
+    CommitteeService,
+    HealthcareService,
+    HobbyService,
+    ProfessionService,
+    ReportService,
   ]
 })
 export class DashboardModule { }

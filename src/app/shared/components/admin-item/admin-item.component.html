@@ -1,0 +1,26 @@
+<div class="admin-item">
+  <div class="admin-item__img">
+    <img src="../../../../assets/img/svg/add_task.svg" alt="edit">
+  </div>
+  <h2 class="admin-item__title">
+    {{ data?.title }}
+  </h2>
+  <mat-dialog-content>
+    <form class="admin-item__form">
+      <mat-form-field class="custom__input">
+        <mat-label>Descripción</mat-label>
+        <input type="input" matInput [formControl]="description" autocomplete="off">
+        <mat-error *ngIf="description.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <div class="admin-item__actions">
+      <button class="custom__button" mat-button mat-dialog-close>Cancelar</button>
+      <button class="custom__button" [mat-dialog-close]="getDescription()" [disabled]="description.invalid"
+        mat-raised-button color="primary">
+        Aceptar
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,22 @@
+.admin-table {
+  margin-bottom: 100px;
+
+  .cell-row {
+    font-family: 'Ubuntu';
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 10px;
+    padding: 5px;
+
+    .update {
+      background-color: #ffd740;
+    }
+  }
+}
+
+table {
+  width: 100%;
+}

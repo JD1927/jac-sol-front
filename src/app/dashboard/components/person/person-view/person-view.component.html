@@ -1,0 +1,39 @@
+<div class="person-view">
+  <div class="person-view__title">
+    <h1 class="person-view__title-text">Persona: {{ selectedPerson?.id}}</h1>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="person-view__detail">
+    <mat-card class="mat-elevation-z4">
+      <mat-card-content>
+        <form class="person">
+          <div class="person__name">
+            <mat-form-field class="custom__input">
+              <mat-label>Nombre</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
+          <div class="person__documentType">
+            <mat-form-field class="custom__input">
+              <mat-label>Tipo Documento</mat-label>
+              <mat-select>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="person__documentId">
+            <mat-form-field class="custom__input">
+              <mat-label>Número Documento</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>
+
+<div *ngIf="!selectedPerson" class="person-view">
+
+</div>

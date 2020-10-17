@@ -51,6 +51,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+              "aot": true,
               "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
@@ -60,12 +61,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumError": "16kb"
                 }
               ],
               "serviceWorker": true,
@@ -141,6 +142,7 @@
   },
   "defaultProject": "jac-sol-front",
   "cli": {
-    "analytics": "0e06ed8d-bf78-48da-a8e0-3293d2f44437"
+    "defaultCollection": "@ngrx/schematics",
+    "analytics": "241e4247-486c-46e6-a1e9-37760342423a"
   }
 }

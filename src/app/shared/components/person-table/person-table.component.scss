@@ -1,0 +1,44 @@
+.person-table {
+  margin-bottom: 100px;
+
+  .cell-row {
+    font-family: 'Ubuntu';
+  }
+
+  .table {
+    .mat-column-documentId {
+      flex: 0 0 12% !important;
+    }
+
+    .mat-column-documentType {
+      flex: 0 0 6% !important;
+    }
+
+    .mat-column-age {
+      flex: 0 0 6% !important;
+    }
+
+    .mat-column-role {
+      flex: 0 0 10% !important;
+    }
+
+    .mat-column-actions {
+      justify-content: center;
+    }
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 10px;
+    padding: 5px;
+
+    .update {
+      background-color: #ffd740;
+    }
+  }
+}
+
+table {
+  width: 100%;
+}

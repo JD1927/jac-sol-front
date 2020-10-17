@@ -1,0 +1,69 @@
+@import './../../../../../styles.scss';
+
+.person-view {
+  margin: 20px 20px 100px;
+
+  @include mq-up(sm) {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  @include mq-up(md) {
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+
+  @include mq-up(lg) {
+    margin-left: 110px;
+    margin-right: 110px;
+  }
+
+  @include e('title') {
+    display: flex;
+
+    @include gc('text') {
+      font-family: 'Ubuntu';
+      font-size: 2rem;
+      font-weight: 500;
+    }
+  }
+
+  @include e('detail') {
+    margin-top: 20px;
+
+    @include gc('title') {
+      font-family: 'Ubuntu';
+      font-size: 1.5rem;
+      font-weight: normal;
+    }
+
+    .person {
+      display: grid;
+      grid-template-areas:
+        'name name name name'
+        'documentType documentType documentId documentId';
+      font-family: 'Ubuntu';
+      column-gap: 20px;
+      font-size: 1rem;
+      font-weight: normal;
+
+      @include e('name') {
+        grid-area: name;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @include e('documentType') {
+        grid-area: documentType;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @include e('documentId') {
+        grid-area: documentId;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

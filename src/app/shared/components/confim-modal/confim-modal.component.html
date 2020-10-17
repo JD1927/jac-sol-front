@@ -1,0 +1,21 @@
+<div class="confirm">
+  <div class="confirm__img">
+    <img src="../../../../assets/img/svg/confirm_outline.svg" alt="confirm">
+  </div>
+  <h2 class="confirm__title">
+    Confirmación
+  </h2>
+  <mat-dialog-content>
+    <div class="confirm__message">
+      {{ data?.message }}
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <div class="confirm__actions">
+      <button class="custom__button" mat-button [mat-dialog-close]="false">Cancelar</button>
+      <button class="custom__button" [mat-dialog-close]="true" mat-raised-button color="primary">
+        Aceptar
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

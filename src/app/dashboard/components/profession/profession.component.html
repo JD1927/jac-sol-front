@@ -1,0 +1,26 @@
+<div class="dashboard">
+  <div class="overlay-loader" *ngIf="!isLoadedData">
+    <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+  </div>
+  <div class="new-item">
+    <div class="dashboard__title">
+      <h1 class="dashboard__title-text">Profesión</h1>
+    </div>
+    <div class="dashboard__button">
+      <button class="custom__button" (click)="onCreateProfession()" mat-raised-button color="primary">
+        Agregar
+        <mat-icon>add_circle_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="dashboard__container animated fade-in-down">
+    <div *ngIf="professionList && isLoadedData" class="dashboard__container-data">
+      <app-admin-table
+        [adminDataSource]="professionList"
+        (updateAdminItem)="onUpdateProfession($event)"
+        (deleteAdminItem)="onDeleteProfession($event)">
+      </app-admin-table>
+    </div>
+  </div>
+</div>

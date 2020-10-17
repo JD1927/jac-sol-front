@@ -32,4 +32,19 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/dashboard/committee']);
   }
 
+  onPeople(): void {
+    this.router.navigate(['/dashboard/people']);
+  }
+
+  onHealthcare(): void {
+    this.router.navigate(['/dashboard/healthcare']);
+  }
+
+  onHobby(): void {
+    this.router.navigate(['/dashboard/hobby']);
+  }
+
+  onProfession(): void {
+    this.router.navigate(['/dashboard/profession']);
+  }
 }
