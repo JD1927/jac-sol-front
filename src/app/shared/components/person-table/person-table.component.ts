@@ -4,9 +4,13 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { saveSelectedPerson } from 'src/app/store/actions/person/person.actions';
+import { PersonService } from 'src/app/dashboard/services/person/person.service';
+import { getAllPeopleList, saveSelectedPerson } from 'src/app/store/actions/person/person.actions';
 import { AppState } from 'src/app/store/reducers/app.reducer';
-import { Person } from '../../models/person.model';
+import { ModalType } from '../../models/error.model';
+import { Person, PersonStatus } from '../../models/person.model';
+import { AlertModalService } from '../../services/alert-modal/alert-modal.service';
+import { ConfirmModalService } from '../../services/confirm-modal/confirm-modal.service';
 
 @Component({
   selector: 'app-person-table',
@@ -26,8 +30,11 @@ export class PersonTableComponent implements OnInit, AfterViewInit {
 
   constructor(
     public store: Store<AppState>,
-    public router: Router
-  ) {}
+    public router: Router,
+    private confirmService: ConfirmModalService,
+    private alertModal: AlertModalService,
+    private personService: PersonService,
+  ) { }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Person>(this.personDataSource);
@@ -47,11 +54,29 @@ export class PersonTableComponent implements OnInit, AfterViewInit {
   }
 
   onShowPersonDetail(person: Person): void {
-    this.store.dispatch(saveSelectedPerson({ person }));
-    this.router.navigate(['/dashboard/people/detail']);
+    this.store.dispatch(saveSelectedPerson({ person, status: PersonStatus.UPDATE }));
+    this.router.navigate(['/dashboard/people/form']);
   }
 
   onDeletePersonDetail(person: Person): void {
+    const { documentId, documentType, id } = person;
+    this.confirmService.openConfirmModal(`¿Estás seguro que deseas eliminar a la persona
+    con ID: '${documentType?.nameCode}-${documentId}' ?`);
+    const { dialogRef } = this.confirmService;
+    dialogRef.afterClosed().subscribe(
+      (res: boolean) => {
+        if (res) { this.onDeletePersonById(id); }
+      }
+    );
+  }
+
+  onDeletePersonById(personId: number | undefined): void {
+    if (personId) {
+      this.personService.deletePerson(personId).subscribe(
+        () => this.store.dispatch(getAllPeopleList()),
+        (err) => this.alertModal.openErrorModal(err.error, ModalType.ERROR)
+      );
+    }
   }
 
 }

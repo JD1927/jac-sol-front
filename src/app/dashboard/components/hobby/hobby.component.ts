@@ -44,7 +44,7 @@ export class HobbyComponent implements OnInit, OnDestroy {
     this.store.dispatch(getHobbyList());
     this.getHobbyList$ = this.store.select(state => state.adminState)
       .pipe(
-        delay(200),
+
         tap((adminState: AdminState | undefined) => {
           this.hobbyList = [];
           if (adminState?.hobbyList && (adminState?.hobbyList.length > 0 || adminState?.hobbyList?.length === 0)) {

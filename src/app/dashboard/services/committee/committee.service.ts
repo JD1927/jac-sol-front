@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { urlCommittee } from 'src/app/shared/global/global.constants';
+import { URL_COMMITTEE } from 'src/app/shared/global/global.constants';
 import { AdminModel } from 'src/app/shared/models/admin.model';
 
 @Injectable({
@@ -12,19 +12,19 @@ export class CommitteeService {
   constructor(private http: HttpClient) { }
 
   getCommitteeList(): Observable<AdminModel[]> {
-    return this.http.get<AdminModel[]>(urlCommittee);
+    return this.http.get<AdminModel[]>(URL_COMMITTEE);
   }
 
   createCommittee(name: string): Observable<AdminModel> {
-    return this.http.post<AdminModel>(urlCommittee, { name });
+    return this.http.post<AdminModel>(URL_COMMITTEE, { name });
   }
 
   updateCommittee(item: AdminModel): Observable<AdminModel> {
     const { id, name } = item;
-    return this.http.patch<AdminModel>(`${urlCommittee}/${id}`, { name });
+    return this.http.patch<AdminModel>(`${URL_COMMITTEE}/${id}`, { name });
   }
 
   deleteCommittee(id: number): Observable<void> {
-    return this.http.delete<void>(`${urlCommittee}/${id}`);
+    return this.http.delete<void>(`${URL_COMMITTEE}/${id}`);
   }
 }

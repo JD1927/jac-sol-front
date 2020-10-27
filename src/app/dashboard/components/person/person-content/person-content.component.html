@@ -7,7 +7,7 @@
       <h1 class="dashboard__title-text">Personas</h1>
     </div>
     <div class="dashboard__button">
-      <button class="custom__button" mat-raised-button color="primary">
+      <button (click)="onCreateNewPerson()" routerLinkActive="router-link-active"  class="custom__button" mat-raised-button color="primary">
         Agregar
         <mat-icon>add_circle_outline</mat-icon>
       </button>

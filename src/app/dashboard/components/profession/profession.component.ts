@@ -44,7 +44,7 @@ export class ProfessionComponent implements OnInit, OnDestroy {
     this.store.dispatch(getProfessionList());
     this.getProfessionList$ = this.store.select(state => state.adminState)
       .pipe(
-        delay(200),
+
         tap((adminState: AdminState | undefined) => {
           this.professionList = [];
           if (adminState?.professionList && (adminState?.professionList?.length > 0 || adminState?.professionList?.length === 0)) {

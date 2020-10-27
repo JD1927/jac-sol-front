@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
-import { Person } from 'src/app/shared/models/person.model';
-import { getAllPeopleList } from 'src/app/store/actions/person/person.actions';
+import { Person, PersonStatus } from 'src/app/shared/models/person.model';
+import { createNewPerson, getAllPeopleList } from 'src/app/store/actions/person/person.actions';
 import { AppState } from 'src/app/store/reducers/app.reducer';
 import { PersonState } from 'src/app/store/reducers/person/person.reducer';
 
@@ -37,7 +37,7 @@ export class PersonContentComponent implements OnInit, OnDestroy {
     this.store.dispatch(getAllPeopleList());
     this.getPersonList$ = this.store.select(state => state.personState)
       .pipe(
-        delay(200),
+
         tap((personState: PersonState | undefined) => {
           this.peopleList = [];
           if (personState?.personList && (personState?.personList.length > 0 || personState?.personList?.length === 0)) {
@@ -47,5 +47,10 @@ export class PersonContentComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe();
+  }
+
+  onCreateNewPerson(): void {
+    this.store.dispatch(createNewPerson({ status: PersonStatus.NEW }));
+    this.router.navigate(['/dashboard/people/form']);
   }
 }

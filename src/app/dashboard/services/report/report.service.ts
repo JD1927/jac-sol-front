@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { urlMembersReport, urlAllPeopleReport } from 'src/app/shared/global/global.constants';
+import { URL_MEMBERS_REPORT, URL_ALL_PEOPLE_REPORT } from 'src/app/shared/global/global.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,10 @@ export class ReportService {
   constructor(private http: HttpClient) { }
 
   getAllMembersReport(): Observable<void> {
-    return this.http.get<void>(urlMembersReport);
+    return this.http.get<void>(URL_MEMBERS_REPORT);
   }
 
   getAllPeopleReport(): Observable<void> {
-    return this.http.get<void>(urlAllPeopleReport);
+    return this.http.get<void>(URL_ALL_PEOPLE_REPORT);
   }
 }

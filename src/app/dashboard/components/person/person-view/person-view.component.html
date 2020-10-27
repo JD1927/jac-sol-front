@@ -1,39 +1,151 @@
 <div class="person-view">
   <div class="person-view__title">
-    <h1 class="person-view__title-text">Persona: {{ selectedPerson?.id}}</h1>
+    <h1 *ngIf="selectedPerson" class="person-view__title-text">Persona: {{ selectedPerson?.documentType?.nameCode }} -
+      {{ selectedPerson?.documentId }}</h1>
+    <h1 *ngIf="!selectedPerson" class="person-view__title-text">Agregar nueva persona</h1>
   </div>
   <mat-divider></mat-divider>
+  <ng-template [ngIf]="selectedPerson?.id">
+    <div class="person-view__cards">
+      <mat-card class="mat-elevation-z4 person-view__cards-option" (click)="onContactNumber()">
+        <mat-card-content class="content">
+          <img src="./../../../../../assets/img/svg/contact_phone.svg" alt="contacto">
+          <h2>Contacto</h2>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="mat-elevation-z4 person-view__cards-option" (click)="onHobby()">
+        <mat-card-content class="content">
+          <img src="./../../../../../assets/img/svg/favorite_border.svg" alt="hobby">
+          <h2>Hobby</h2>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="mat-elevation-z4 person-view__cards-option" (click)="onProfession()">
+        <mat-card-content class="content">
+          <img src="./../../../../../assets/img/svg/work_outline.svg" alt="profesión">
+          <h2>Profesión</h2>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <mat-divider></mat-divider>
+  </ng-template>
 
   <div class="person-view__detail">
     <mat-card class="mat-elevation-z4">
       <mat-card-content>
-        <form class="person">
+        <form [formGroup]="personForm" class="person">
           <div class="person__name">
             <mat-form-field class="custom__input">
               <mat-label>Nombre</mat-label>
-              <input matInput>
+              <input matInput formControlName="name">
             </mat-form-field>
+          </div>
+          <div class="person__role">
+            <mat-form-field class="custom__input">
+              <mat-label>Role</mat-label>
+              <mat-select (selectionChange)="onRoleChange()" formControlName="role">
+                <mat-option *ngFor="let role of roleList" [value]="role">
+                  {{ role?.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="person__dateBirth">
+            <mat-form-field class="custom__input">
+              <mat-label>Fecha de nacimiento</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="dateBirth" [max]="maxDate">
+              <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="person__gender">
+            <p class="title">Género</p>
+            <mat-radio-group class="custom__input radio-gender" formControlName="gender" aria-label="Género">
+              <mat-radio-button  *ngFor="let gender of genderList" [value]="gender">
+                {{ gender?.nameCode }}
+              </mat-radio-button>
+            </mat-radio-group>
           </div>
           <div class="person__documentType">
             <mat-form-field class="custom__input">
               <mat-label>Tipo Documento</mat-label>
-              <mat-select>
+              <mat-select formControlName="documentType">
+                <mat-option *ngFor="let dType of documentTypeList" [value]="dType">
+                  {{ dType?.nameCode }} - {{ dType?.name }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
           <div class="person__documentId">
             <mat-form-field class="custom__input">
               <mat-label>Número Documento</mat-label>
-              <input matInput>
+              <input matInput formControlName="documentId">
             </mat-form-field>
+          </div>
+          <div class="person__email">
+            <mat-form-field class="custom__input">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email">
+            </mat-form-field>
+          </div>
+          <div class="person__address">
+            <mat-form-field class="custom__input">
+              <mat-label>Dirección</mat-label>
+              <input matInput formControlName="address">
+            </mat-form-field>
+          </div>
+          <div class="person__healthcareType">
+            <mat-form-field class="custom__input">
+              <mat-label>Tipo Afiliado EPS</mat-label>
+              <mat-select formControlName="healthcareType">
+                <mat-option *ngFor="let hType of healthcareTypeList" [value]="hType">
+                  {{ hType?.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="person__healthcare">
+            <mat-form-field class="custom__input">
+              <mat-label>EPS</mat-label>
+              <mat-select formControlName="healthcare">
+                <mat-option *ngFor="let healthcare of healthcareList" [value]="healthcare">
+                  {{ healthcare?.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="person__academicLevel">
+            <mat-form-field class="custom__input">
+              <mat-label>Nivel Académico</mat-label>
+              <mat-select formControlName="academicLevel">
+                <mat-option *ngFor="let academicLevel of academicLevelList" [value]="academicLevel">
+                  {{ academicLevel?.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="person__committee">
+            <mat-form-field *ngIf="isRequiredCommittee()" class="custom__input">
+              <mat-label>Comité</mat-label>
+              <mat-select formControlName="committee">
+                <mat-option *ngFor="let committee of committeeList" [value]="committee">
+                  {{ committee?.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="person__return">
+            <button (click)="onReturnBack()" class="custom__button" mat-raised-button>
+              Regresar
+            </button>
+          </div>
+          <div class="person__save">
+            <button (click)="onSavePerson()" [disabled]="!personForm.valid" class="custom__button" mat-raised-button color="primary">
+              Guardar
+            </button>
           </div>
         </form>
       </mat-card-content>
     </mat-card>
 
   </div>
-</div>
-
-<div *ngIf="!selectedPerson" class="person-view">
-
 </div>

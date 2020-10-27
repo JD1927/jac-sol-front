@@ -51,9 +51,11 @@ export class DashboardContentComponent implements OnInit {
   }
 
   onMembersReport(): void {
-    this.reportService.getAllMembersReport().subscribe((res) => {
-      console.log(res);
-    });
+    this.reportService.getAllMembersReport().subscribe();
+  }
+
+  onAllPeopleReport(): void {
+    this.reportService.getAllPeopleReport().subscribe();
   }
 
 }

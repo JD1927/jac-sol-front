@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { urlProfession } from 'src/app/shared/global/global.constants';
+import { URL_PROFESSION } from 'src/app/shared/global/global.constants';
 import { AdminModel } from 'src/app/shared/models/admin.model';
 
 @Injectable({
@@ -12,19 +12,19 @@ export class ProfessionService {
   constructor(private http: HttpClient) { }
 
   getProfessionList(): Observable<AdminModel[]> {
-    return this.http.get<AdminModel[]>(urlProfession);
+    return this.http.get<AdminModel[]>(URL_PROFESSION);
   }
 
   createProfession(name: string): Observable<AdminModel> {
-    return this.http.post<AdminModel>(urlProfession, { name });
+    return this.http.post<AdminModel>(URL_PROFESSION, { name });
   }
 
   updateProfession(item: AdminModel): Observable<AdminModel> {
     const { id, name } = item;
-    return this.http.patch<AdminModel>(`${urlProfession}/${id}`, { name });
+    return this.http.patch<AdminModel>(`${URL_PROFESSION}/${id}`, { name });
   }
 
   deleteProfession(id: number): Observable<void> {
-    return this.http.delete<void>(`${urlProfession}/${id}`);
+    return this.http.delete<void>(`${URL_PROFESSION}/${id}`);
   }
 }

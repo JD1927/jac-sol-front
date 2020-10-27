@@ -1,17 +1,23 @@
 /** ================== ROUTES ====================== */
 export const URL = 'http://localhost:3000';
 /** ================== CHART ====================== */
-export const urlMembersByCommittee = `${URL}/api/person/member/committee`;
-export const urlPeopleByRole = '/api/person/role';
+export const URL_MEMBERS_BY_COMMITTEE = `/api/person/member/committee`;
+export const URL_PEOPLE_BY_ROLE = '/api/person/role';
 
 /** ================== ADMIN ====================== */
-export const urlCommittee = '/api/committee';
-export const urlHealthcare = '/api/healthcare';
-export const urlHobby = '/api/hobby';
-export const urlProfession = '/api/profession';
+export const URL_COMMITTEE = '/api/committee';
+export const URL_HEALTHCARE = '/api/healthcare';
+export const URL_HOBBY = '/api/hobby';
+export const URL_PROFESSION = '/api/profession';
+export const URL_DOCUMENT_TYPE = '/api/document/type';
+export const URL_ROLE = '/api/role';
+export const URL_GENDER = '/api/gender';
+export const URL_HEALTHCARE_TYPE = '/api/healthcare/type';
+export const URL_ACADEMIC_LEVEL = '/api/academic/level';
+export const URL_CONTACT_NUMBER = '/api/contact/number';
 
-export const urlMembersReport = '/api/report/member';
-export const urlAllPeopleReport = '/api/report/all';
+export const URL_MEMBERS_REPORT = '/api/report/member';
+export const URL_ALL_PEOPLE_REPORT = '/api/report/all';
 
 /** ================== PERSON ====================== */
-export const urlPerson = '/api/person';
+export const URL_PERSON = '/api/person';

@@ -20,14 +20,26 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import * as _moment from 'moment';
 
 
+import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { ContactNumberComponent } from './contact-number/contact-number.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PersonHobbyComponent } from './person-hobby/person-hobby.component';
+import { PersonProfessionComponent } from './person-profession/person-profession.component';
 
 @NgModule({
   declarations: [
     PersonComponent,
     PersonViewComponent,
-    PersonContentComponent
+    PersonContentComponent,
+    ContactNumberComponent,
+    PersonHobbyComponent,
+    PersonProfessionComponent
   ],
   imports: [
     CommonModule,
@@ -38,9 +50,12 @@ import { MatSelectModule } from '@angular/material/select';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
+    MatDatepickerModule,
+    MatRadioModule,
     MatIconModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forFeature('personState', personReducer),
@@ -48,7 +63,15 @@ import { MatSelectModule } from '@angular/material/select';
     SharedModule,
   ],
   providers: [
-    PersonService
+    PersonService,
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+    {
+      provide: MAT_RADIO_DEFAULT_OPTIONS,
+      useValue: { color: 'primary' },
+    },
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] },
   ]
 })
 export class PersonModule { }

@@ -14,7 +14,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AdminEffects } from '../store/effects/admin/admin.effects';
 import { adminReducer } from '../store/reducers/admin/admin.reducer';
-import { personReducer } from '../store/reducers/person/person.reducer';
 import { SidenavComponent } from './../dashboard/components/sidenav/sidenav.component';
 import { ToolbarComponent } from './../dashboard/components/toolbar/toolbar.component';
 import { SharedModule } from './../shared/shared.module';
@@ -25,10 +24,11 @@ import { ChartService } from './services/charts/chart.service';
 import { CommitteeService } from './services/committee/committee.service';
 import { HealthcareService } from './services/healthcare/healthcare.service';
 import { HobbyService } from './services/hobby/hobby.service';
+import { ParameterService } from './services/parameter/parameter.service';
 import { ProfessionService } from './services/profession/profession.service';
-import { SidenavService } from './services/sidenav/sidenav.service';
 import { ReportService } from './services/report/report.service';
-import { PersonEffects } from '../store/effects/person/person.effects';
+import { SidenavService } from './services/sidenav/sidenav.service';
+import { ContactNumberService } from './services/contact-number/contact-number.service';
 
 export const routes: Routes = [
   {
@@ -70,6 +70,8 @@ export const routes: Routes = [
     HobbyService,
     ProfessionService,
     ReportService,
+    ParameterService,
+    ContactNumberService,
   ]
 })
 export class DashboardModule { }

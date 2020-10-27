@@ -44,7 +44,7 @@ export class HealthcareComponent implements OnInit, OnDestroy {
     this.store.dispatch(getHealthcareList());
     this.getHealthcareList$ = this.store.select(state => state.adminState)
       .pipe(
-        delay(200),
+
         tap((adminState: AdminState | undefined) => {
           this.healthcareList = [];
           if (adminState?.healthcareList && (adminState?.healthcareList.length > 0 || adminState?.healthcareList?.length === 0)) {

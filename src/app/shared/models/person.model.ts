@@ -42,7 +42,13 @@ export interface AcademicLevel {
 
 export interface ContactNumber {
   personId: number;
-  contactNumber: number;
+  contactNumber: string;
+  newContactNumber?: number;
+}
+
+export enum PersonRole {
+  MEMBER = 1,
+  COMMUNITY = 2
 }
 
 export interface Person {
@@ -50,24 +56,40 @@ export interface Person {
   documentId: string;
   name: string;
   dateBirth: string;
-  age: number;
+  age?: number;
   address: string;
   email: string;
   documentType?: DocumentType;
   documentTypeId: number;
   role?: Role;
   roleId: number;
-  gender: Gender;
+  gender?: Gender;
   genderId: number;
   healthcareType?: HealthcareType;
   healthcareTypeId: number;
   healthcare?: Healthcare;
   healthcareId: number;
   committee?: Committee;
-  committeeId?: number;
+  committeeId?: number | null;
   academicLevel?: AcademicLevel;
   academicLevelId: number;
-  contactNumber: ContactNumber[];
+  contactNumber?: ContactNumber[];
   relative?: Person;
-  relativeId?: number;
+  relativeId?: number | null;
+}
+
+export enum PersonStatus {
+  NEW = 'NEW',
+  UPDATE = 'UPDATE',
+}
+
+export interface PersonHobby {
+  personId: number;
+  hobbyId: number;
+  hobbyName?: string;
+}
+export interface PersonProfession {
+  personId: number;
+  professionId: number;
+  professionName?: string;
 }

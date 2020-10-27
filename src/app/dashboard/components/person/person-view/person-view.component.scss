@@ -28,6 +28,27 @@
     }
   }
 
+  @include e('cards') {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+
+    @include gc('option') {
+      cursor: pointer;
+
+      .content {
+        display: flex;
+        justify-content: center;
+
+        img {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
   @include e('detail') {
     margin-top: 20px;
 
@@ -40,8 +61,30 @@
     .person {
       display: grid;
       grid-template-areas:
-        'name name name name'
-        'documentType documentType documentId documentId';
+        'name name'
+        'role role'
+        'dateBirth dateBirth'
+        'gender gender'
+        'documentType documentType'
+        'documentId documentId'
+        'email email'
+        'address address'
+        'healthcareType healthcareType'
+        'healthcare healthcare'
+        'academicLevel academicLevel '
+        'committee committee'
+        'save save'
+        'return return';
+      @include mq-up(sm) {
+        grid-template-areas:
+          'name name name role role role'
+          'dateBirth dateBirth dateBirth gender gender gender'
+          'documentType documentType documentType documentId documentId documentId'
+          'email email email address address address'
+          'healthcareType healthcareType healthcareType healthcare healthcare healthcare'
+          'academicLevel academicLevel academicLevel committee committee committee'
+          'return return return save save save';
+      }
       font-family: 'Ubuntu';
       column-gap: 20px;
       font-size: 1rem;
@@ -49,6 +92,18 @@
 
       @include e('name') {
         grid-area: name;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @include e('dateBirth') {
+        grid-area: dateBirth;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @include e('role') {
+        grid-area: role;
         display: grid;
         grid-template-columns: 1fr;
       }
@@ -63,6 +118,81 @@
         grid-area: documentId;
         display: grid;
         grid-template-columns: 1fr;
+      }
+
+      @include e('gender') {
+        grid-area: gender;
+        display: grid;
+        grid-template-columns: 1fr;
+
+        .title {
+          @include mq-up(sm) {
+            margin-bottom: -10px;
+          }
+        }
+
+        .radio-gender {
+          display: grid;
+          grid-template-columns: repeat(3, 40px);
+          column-gap: 16px;
+        }
+      }
+
+      @include e('email') {
+        grid-area: email;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @include e('address') {
+        grid-area: address;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @include e('healthcareType') {
+        grid-area: healthcareType;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @include e('healthcare') {
+        grid-area: healthcare;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @include e('academicLevel') {
+        grid-area: academicLevel;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @include e('committee') {
+        grid-area: committee;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @include e('return') {
+        grid-area: return;
+        display: grid;
+        grid-template-columns: 1fr;
+
+        @include mq-up(sm) {
+          margin-top: 20px;
+        }
+      }
+
+      @include e('save') {
+        grid-area: save;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 20px;
+
+        @include mq-up(sm) {
+          margin-top: 20px;
+        }
       }
     }
   }

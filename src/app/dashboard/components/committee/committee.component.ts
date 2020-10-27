@@ -44,7 +44,7 @@ export class CommitteeComponent implements OnInit, OnDestroy {
     this.store.dispatch(getCommitteeList());
     this.getCommitteeList$ = this.store.select(state => state.adminState)
       .pipe(
-        delay(200),
+
         tap((adminState: AdminState | undefined) => {
           this.committeeList = [];
           if (adminState?.committeeList && (adminState?.committeeList?.length > 0 || adminState?.committeeList?.length === 0)) {

@@ -14,9 +14,9 @@ const routes: Routes = [
         component: PersonContentComponent
       },
       {
-        path: 'detail',
+        path: 'form',
         component: PersonViewComponent
-      }
+      },
     ]
   },
   {
