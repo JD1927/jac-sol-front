@@ -1,0 +1,70 @@
+<div class="person-table">
+  <mat-form-field class="custom__input">
+    <mat-label>Buscador</mat-label>
+    <input matInput (keyup)="adminTableFilter($event)" #input placeholder="Ejemplo: 1, Nombre...">
+  </mat-form-field>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort class="table">
+      <!-- documentId Column -->
+      <ng-container matColumnDef="documentId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+        <mat-cell class="cell-row" *matCellDef="let row">{{ row.documentId }}</mat-cell>
+      </ng-container>
+
+      <!-- documentType Column -->
+      <ng-container matColumnDef="documentType">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+        <mat-cell class="cell-row" mat-cell *matCellDef="let row">{{row.documentType?.nameCode}}</mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+        <mat-cell class="cell-row" mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+      </ng-container>
+
+      <!-- Age Column -->
+      <ng-container matColumnDef="age">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Edad</mat-header-cell>
+        <mat-cell class="cell-row" mat-cell *matCellDef="let row">{{row.age}}</mat-cell>
+      </ng-container>
+
+      <!-- Address Column -->
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</mat-header-cell>
+        <mat-cell class="cell-row" mat-cell *matCellDef="let row">{{row.address}}</mat-cell>
+      </ng-container>
+
+      <!-- Role Column -->
+      <ng-container matColumnDef="role">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Rol</mat-header-cell>
+        <mat-cell class="cell-row" mat-cell *matCellDef="let row">{{row.role?.name}}</mat-cell>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+        <mat-cell class="cell-row" mat-cell *matCellDef="let element">
+          <div class="actions">
+            <button mat-mini-fab color="primary" (click)="onShowPersonDetail(element)">
+              <mat-icon>remove_red_eye</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn" (click)="onDeletePersonDetail(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator showFirstLastButtons [pageSizeOptions]="[5, 10, 15]">
+    </mat-paginator>
+  </div>
+</div>

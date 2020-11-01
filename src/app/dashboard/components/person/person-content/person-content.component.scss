@@ -1,0 +1,10 @@
+@import './../../dashboard-content/dashboard-content.component.scss';
+
+.dashboard {
+
+  .new-item {
+    display: grid;
+    grid-template-columns: 7fr 1fr;
+    align-items: center;
+  }
+}

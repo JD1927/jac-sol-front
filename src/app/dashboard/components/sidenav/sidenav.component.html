@@ -1,0 +1,30 @@
+<mat-drawer-container class="container">
+  <mat-drawer #sidenav class="sidenav" mode="side" opened>
+    <mat-selection-list multiple="false" class="sidenav__list">
+      <mat-list-option class="option" (click)="onHome()">
+        <mat-icon mat-list-icon>home</mat-icon> Inicio
+      </mat-list-option>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Administración</div>
+      <mat-list-option class="option" (click)="onPeople()">
+        <mat-icon mat-list-icon>people</mat-icon> Personas
+      </mat-list-option>
+      <mat-list-option class="option" (click)="onCommittee()">
+        <mat-icon mat-list-icon>group_work</mat-icon> Comité
+      </mat-list-option>
+      <mat-list-option class="option" (click)="onHealthcare()">
+        <mat-icon mat-list-icon>healing</mat-icon> E.P.S
+      </mat-list-option>
+      <mat-list-option class="option" (click)="onHobby()">
+        <mat-icon mat-list-icon>favorite_border</mat-icon> Hobby
+      </mat-list-option>
+      <mat-list-option class="option" (click)="onProfession()">
+        <mat-icon mat-list-icon>work_outline</mat-icon> Profesión
+      </mat-list-option>
+
+    </mat-selection-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

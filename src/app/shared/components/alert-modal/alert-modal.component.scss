@@ -1,0 +1,22 @@
+@import './../../../../styles.scss';
+
+.alert {
+
+  @include e('img') {
+    text-align: center;
+  }
+  @include e('title') {
+    text-align: center;
+    font-family: 'Ubuntu';
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+  }
+  @include e('message') {
+    text-align: center;
+    font-family: 'Ubuntu';
+    font-size: 1rem;
+    font-weight: normal;
+    margin-bottom: 20px;
+  }
+}

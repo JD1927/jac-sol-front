@@ -1,0 +1,48 @@
+<div class="contact">
+  <div class="overlay-loader" *ngIf="isLoading">
+    <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+  </div>
+  <h1 class="contact__title">
+    Número de contactos
+  </h1>
+  <mat-dialog-content>
+    <div class="contact__content">
+      <div class="contact__content-form">
+        <form [formGroup]="contactNumberForm" (submit)="onAddNumber()" class="form">
+          <mat-form-field class="custom__input">
+            <mat-label>Número de contacto</mat-label>
+            <input matInput formControlName="number" autocomplete="off">
+          </mat-form-field>
+          <button [disabled]="!contactNumberForm.valid" type="submit" mat-icon-button color="primary">
+            <mat-icon>add_ic_call</mat-icon>
+          </button>
+        </form>
+      </div>
+      <div class="contact__content-numbers">
+        <div class="list" *ngIf="contactNumberList.length > 0">
+            <mat-card class="number mat-elevation-z4" *ngFor="let number of contactNumberList">
+              <div class="img">
+                <img src="./../../../../../assets/img/svg/phone-black.svg" alt="teléfono">
+              </div>
+              <div class="value">{{ number?.contactNumber }}</div>
+              <button mat-icon-button color="warn" (click)="onDeleteNumber(number.contactNumber)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card>
+        </div>
+        <div class="no-list" *ngIf="contactNumberList.length === 0">
+          <div>
+            <h2>No tiene números de contacto aún.</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <div class="contact__actions">
+      <button class="custom__button" mat-dialog-close mat-raised-button>
+        Cerrar
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

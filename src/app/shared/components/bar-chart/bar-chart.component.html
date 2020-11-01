@@ -1,0 +1,13 @@
+<div class="chart">
+  <div class="chart__title">
+    <h1 class="chart__title-text">{{ title }}</h1>
+  </div>
+  <canvas class="chart__canvas" baseChart
+    [data]="barChartData"
+    [labels]="barChartLabels"
+    [chartType]="barChartType"
+    [options]="barChartOptions"
+    [legend]="barChartLegend"
+    [colors]="barChartColors">
+  </canvas>
+</div>

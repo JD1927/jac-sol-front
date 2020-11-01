@@ -1,0 +1,13 @@
+<div class="chart">
+  <div class="chart__title">
+    <h1 class="chart__title-text">{{ title }}</h1>
+  </div>
+  <canvas class="chart__canvas" baseChart
+    [data]="pieChartData"
+    [labels]="pieChartLabels"
+    [chartType]="pieChartType"
+    [options]="pieChartOptions"
+    [colors]="pieChartColors"
+    [legend]="pieChartLegend">
+  </canvas>
+</div>
